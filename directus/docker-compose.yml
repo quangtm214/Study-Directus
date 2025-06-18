@@ -49,6 +49,16 @@ services:
       - directus_db
     networks:
       - directus_network
+
+  nest:
+    image: shop-directus-nestjs:latest
+    container_name: shop_directus_nest_test_1
+    ports:
+      - "9939:9939"
+    depends_on:
+      - directus
+    networks:
+      - directus_network
       
 volumes:
   directus_pgdata:

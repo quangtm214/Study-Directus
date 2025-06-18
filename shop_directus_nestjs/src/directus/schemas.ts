@@ -6,7 +6,7 @@ export interface Schema {
 
     category: category[];
 
-    users: users[];
+    register: register[];
 
     // tag: {
     //     id: string;               // UUID
@@ -53,11 +53,13 @@ export interface category {
     name: string;
 }
 
-export interface users {
+export interface register {
     id: string;
-    email: string;
-    first_name?: string;
-    last_name?: string;
-    role: string;
     status: string;
+    full_name: string;
+    email: string;
+    phone: string;
+    university: string;
+    stock_code: string;
+    rank: string;
 }

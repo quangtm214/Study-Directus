@@ -1,6 +1,7 @@
-import { Body, Controller, Get, Inject, Post } from '@nestjs/common';
+import { Body, Controller, Get, Inject, Post, Render, Res } from '@nestjs/common';
 import { ProductService } from './product.service';
 import { CreateProductDto } from './product.dto';
+import { Response } from 'express';
 
 @Controller('product')
 export class ProductController {
@@ -9,8 +10,9 @@ export class ProductController {
     ) { }
 
     @Get()
-    async getProducts() {
-        return this.productService.getProducts();
+    async getProducts(@Res() res: Response) {
+        const result = await this.productService.getProducts();
+        return res.render('product', { products: result });
     }
 
     @Post()

@@ -1,5 +1,6 @@
 import { AuthenticationData, createItem, createUser } from '@directus/sdk';
 import { BadRequestException, HttpException, HttpStatus, Inject, Injectable } from '@nestjs/common';
+import { mapDirectusErrorCodeToStatus } from 'src/common/filters/mapDirectusErrorCodeToStatus';
 import { DirectusService } from 'src/directus/directus.service';
 import { CreateUserDto } from 'src/module/auth/auth.dto';
 
@@ -16,24 +17,18 @@ export class AuthService {
             const token = await this.directusService.login(email, password);
             return token;
         } catch (error) {
-            if (error?.errors) {
-                const firstError = error.errors[0];
-                throw new HttpException(
-                    {
-                        message: firstError.message || 'Directus error',
-                        code: firstError.extensions?.code || 'UNKNOWN',
-                        detail: firstError.extensions || null,
-                    },
-                    HttpStatus.BAD_REQUEST,
-                );
-            }
+            const firstError = error?.errors?.[0];
 
-            // Lỗi khác
+            const code = firstError?.extensions?.code || 'UNKNOWN';
+            const message = firstError?.message || 'Lỗi không xác định từ Directus';
+
             throw new HttpException(
                 {
-                    message: error.message || 'Internal server error',
+                    message,
+                    code,
+                    detail: firstError?.extensions || null,
                 },
-                HttpStatus.INTERNAL_SERVER_ERROR,
+                mapDirectusErrorCodeToStatus(code)
             );
         }
     }
@@ -47,23 +42,18 @@ export class AuthService {
             );
             return result;
         } catch (error) {
-            if (error?.errors) {
-                const firstError = error.errors[0];
-                throw new BadRequestException(
-                    {
-                        message: firstError.message || 'Directus error',
-                        code: firstError.extensions?.code || 'UNKNOWN',
-                        detail: firstError.extensions || null,
-                    },
-                );
-            }
+            const firstError = error?.errors?.[0];
 
-            // Lỗi khác
+            const code = firstError?.extensions?.code || 'UNKNOWN';
+            const message = firstError?.message || 'Lỗi không xác định từ Directus';
+
             throw new HttpException(
                 {
-                    message: error.message || 'Internal server error',
+                    message,
+                    code,
+                    detail: firstError?.extensions || null,
                 },
-                HttpStatus.INTERNAL_SERVER_ERROR,
+                mapDirectusErrorCodeToStatus(code)
             );
         }
     }

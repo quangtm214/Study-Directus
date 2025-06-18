@@ -6,13 +6,15 @@ import { DirectusModule } from 'src/directus/directus.module';
 import { ProductModule } from 'src/module/product/product.module';
 import { DirectusTokenMiddleware } from 'src/directus/directusTokenMiddleware';
 import { WebhookModule } from 'src/module/webhook/webhook.module';
+import { RegisterModule } from 'src/module/register/register.module';
 
 @Module({
   imports: [
     DirectusModule,
     AuthModule,
     ProductModule,
-    WebhookModule
+    WebhookModule,
+    RegisterModule
   ],
   controllers: [AppController],
   providers: [AppService],

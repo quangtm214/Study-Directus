@@ -1,0 +1,86 @@
+ body {
+            background: #f5f7fb;
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+.login-container {
+            background: white;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+
+h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #444;
+        }
+
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 0.7rem;
+            margin-bottom: 1.2rem;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.2s;
+        }
+
+        input:focus {
+            border-color: #0070f3;
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 0.8rem;
+            background-color: #0070f3;
+            color: white;
+            font-size: 1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        button:hover {
+            background-color: #005bb5;
+        }
+
+        .message {
+            margin-bottom: 1rem;
+            padding: 0.8rem;
+            border-radius: 6px;
+            text-align: center;
+            font-size: 0.95rem;
+        }
+
+        .success {
+            background-color: #e6ffed;
+            color: #2c7a4f;
+            border: 1px solid #b5e0c1;
+        }
+
+        .error {
+            background-color: #ffe6e6;
+            color: #a33a3a;
+            border: 1px solid #e0b5b5;
+        }
