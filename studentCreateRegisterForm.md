@@ -32,3 +32,7 @@ sequenceDiagram
         Service-->>NestJS: Throw error
         NestJS-->>Browser: Redirect to /register?error=message with form data
     end
+```
+
+![registerCollectionDirectus](./image/registerCollectionDirectus.png) 
+![createRegisterPage](./image/createRegisterPage.png) 
