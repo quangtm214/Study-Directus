@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Danh sách sản phẩm</title>
+    <link rel="stylesheet" href="/styles/product.css" />
+</head>
+
+<body>
+    <div class="container">
+        <h1>Danh sách sản phẩm</h1>
+
+        {{#if products.length}}
+        <div class="product-list">
+            {{#each products}}
+            <div class="product-card">
+                {{#if image}}
+                <img src="http://localhost:8055/assets/{{image}}" alt="{{name}}" />
+                {{/if}}
+
+                <h3>{{name}}</h3>
+                <p class="price">{{price}} VNĐ</p>
+
+                {{#if description}}
+                <p>Mô tả: {{description}}</p>
+                {{/if}}
+
+                {{#if category}}
+                {{#if category.name}}
+                <p><em>Danh mục: {{category.name}}</em></p>
+                {{/if}}
+                {{/if}}
+            </div>
+            {{/each}}
+        </div>
+        {{else}}
+        <p>Chưa có sản phẩm nào.</p>
+        {{/if}}
+    </div>
+</body>
+
+</html>
