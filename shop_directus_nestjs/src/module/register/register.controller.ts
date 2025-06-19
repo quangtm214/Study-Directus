@@ -42,7 +42,7 @@ export class RegisterController {
             const msg = encodeURIComponent(err.message || 'Đăng ký thất bại');
             const queryData = new URLSearchParams({
                 error: msg,
-                ...body, // spread các input: full_name, email, phone, university
+                ...body,
             }).toString();
 
             return res.redirect(`/register?${queryData}`);
